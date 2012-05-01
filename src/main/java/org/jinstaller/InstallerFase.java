@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jinstaller;
+package org.jinstaller;
+
+import javax.swing.JPanel;
 
 /**
  *
@@ -12,4 +14,5 @@ public interface InstallerFase {
     boolean onContinue();
     void prepare();
     void setMainInstaller(MainInstaller main);
+    JPanel getPanel();
 }

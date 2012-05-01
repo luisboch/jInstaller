@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jinstaller;
+package org.jinstaller;
 
 /**
  *
@@ -11,4 +11,6 @@ package com.jinstaller;
 public interface MainInstaller {
     void changeMessage(String message);
     void forceContine();
+    void lock();
+    void unlock();
 }

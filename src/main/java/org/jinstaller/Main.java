@@ -2,30 +2,47 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jinstaller;
+package org.jinstaller;
 
-import com.jinstaller.panels.JPanelLicence;
-import com.jinstaller.panels.JPanelStart;
-import java.awt.Panel;
+import org.jinstaller.panels.JPanelLicence;
+import org.jinstaller.panels.JPanelStart;
+import org.jinstaller.util.ImageUtil;
+import org.jinstaller.util.MessageUtil;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
  *
  * @author luis
  */
-public class Main extends javax.swing.JFrame implements MainInstaller{
+public class Main extends javax.swing.JFrame implements MainInstaller {
 
     int pointer = 0;
     List<InstallerFase> fases;
     JPanel actualPanel;
+    boolean locked = false;
+    ImageIcon leftImage = null;
+    ImageIcon welcomeImage = null;
 
     /**
      * Creates new form Main
      */
     public Main() {
+        
+        leftImage = ImageUtil.getRelativeImageIcon(Properties.getPropertie("left-image"));
+        
+        if(leftImage == null){
+            leftImage = new ImageIcon(getClass().getResource("org.jinstaller.resources.app.png"));
+        }
+        
+        welcomeImage = ImageUtil.getRelativeImageIcon("welcome-image");
+        
+        if(welcomeImage == null){
+            welcomeImage = new ImageIcon(getClass().getResource("org.jinstaller.resources.start.png"));
+        }
+        
         initComponents();
         setLocationRelativeTo(null);
         fases = new ArrayList<InstallerFase>();
@@ -36,11 +53,13 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
     }
 
     public void next() {
-        if(actualPanel != null){
+        if (actualPanel != null) {
             actualPanel.setVisible(false);
             jPanelInteract.remove(actualPanel);
         }
-        actualPanel = (JPanel) fases.get(pointer);
+        actualPanel = fases.get(pointer).getPanel();
+        actualPanel.setVisible(true);
+        
         jPanelInteract.add(actualPanel);
         changeButtoms();
 
@@ -49,7 +68,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
     private void changeButtoms() {
         if (pointer == 0) {
             jButtonPrev.setVisible(false);
-        } else if (pointer == fases.size() - 1 ) {
+        } else if (pointer == fases.size() - 1) {
             jButtonNext.setText("Finish");
             jButtonPrev.setVisible(false);
         } else {
@@ -57,7 +76,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
             jButtonNext.setText("Next");
         }
 
-        }
+    }
 
     public boolean hasNext() {
         return pointer < fases.size();
@@ -84,9 +103,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
         jButtonPrev = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
-        setPreferredSize(new java.awt.Dimension(800, 400));
         setResizable(false);
         setUndecorated(true);
 
@@ -128,7 +145,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
         jPanel3.setMinimumSize(new java.awt.Dimension(150, 400));
         jPanel3.setPreferredSize(new java.awt.Dimension(150, 400));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jinstaller/resources/app.png"))); // NOI18N
+        jLabel1.setIcon(leftImage);
         jLabel1.setMaximumSize(new java.awt.Dimension(150, 0));
         jLabel1.setMinimumSize(new java.awt.Dimension(150, 0));
         jLabel1.setPreferredSize(new java.awt.Dimension(150, 0));
@@ -238,20 +255,24 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
     }//GEN-LAST:event_jButtonCancelMousePressed
 
     private void jButtonNextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMousePressed
-        boolean next = ((InstallerFase) actualPanel).onContinue();
-        if (next) {
-            pointer++;
-            if (hasNext()) {
-                next();
-            } else {
-                System.exit(0);
+        if (!locked) {
+            boolean next = ((InstallerFase) actualPanel).onContinue();
+            if (next) {
+                pointer++;
+                if (hasNext()) {
+                    next();
+                } else {
+                    System.exit(0);
+                }
             }
         }
     }//GEN-LAST:event_jButtonNextMousePressed
 
     private void jButtonPrevMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrevMousePressed
-        pointer--;
-        next();
+        if (!locked) {
+            pointer--;
+            next();
+        }
     }//GEN-LAST:event_jButtonPrevMousePressed
 
     /**
@@ -282,10 +303,25 @@ public class Main extends javax.swing.JFrame implements MainInstaller{
     // End of variables declaration//GEN-END:variables
 
     public void changeMessage(String message) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        jLabelMessage.setText(MessageUtil.getMessage(message));
     }
 
     public void forceContine() {
         jButtonNextMousePressed(null);
+    }
+    
+    private void lock(boolean lock) {
+        locked = lock;
+        jButtonCancel.setEnabled(lock);
+        jButtonNext.setEnabled(lock);
+        jButtonPrev.setEnabled(lock);
+    }
+    
+    public void lock() {
+        lock(true);
+    }
+
+    public void unlock() {
+        lock(false);
     }
 }

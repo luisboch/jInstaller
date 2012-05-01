@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jinstaller.panels;
+package org.jinstaller.panels;
 
-import com.jinstaller.InstallerFase;
-import com.jinstaller.MainInstaller;
+import javax.swing.JPanel;
+import org.jinstaller.InstallerFase;
+import org.jinstaller.MainInstaller;
 
 /**
  *
@@ -54,5 +55,9 @@ public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
     
     public void setMainInstaller(MainInstaller main) {
         this.main = main;
+    }
+
+    public JPanel getPanel() {
+        return this;
     }
 }
