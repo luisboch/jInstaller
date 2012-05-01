@@ -18,8 +18,21 @@ public class FileUtil {
 
     public static List<String> readString(String path) {
         List<String> string = new ArrayList<String>();
-
+        if (!path.startsWith("/") && !path.toLowerCase().startsWith("c")
+                || !path.toLowerCase().startsWith("d")
+                || !path.toLowerCase().startsWith("e")
+                || !path.toLowerCase().startsWith("f")) {
+            try {
+                path = new File(".").getCanonicalPath()
+                        + System.getProperty("file.separator") + path;
+            } catch (IOException ex) {
+                Logger.getLogger(FileUtil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
         try {
+            
             FileReader file = new FileReader(path);
             BufferedReader reader = new BufferedReader(file);
             String s;
@@ -35,5 +48,14 @@ public class FileUtil {
             return null;
         }
         return string;
+    }
+    
+    public static String readText(String path){
+        List<String> txt= readString(path);
+        StringBuilder b = new StringBuilder();
+        for(String s:txt){
+            b.append(s).append("\n");
+        }
+        return b.toString();
     }
 }

@@ -4,6 +4,7 @@
  */
 package org.jinstaller;
 
+import org.jinstaller.util.Properties;
 import org.jinstaller.panels.JPanelLicence;
 import org.jinstaller.panels.JPanelStart;
 import org.jinstaller.util.ImageUtil;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import org.jinstaller.panels.JPanelFolderSelection;
 
 /**
  *
@@ -24,31 +26,26 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
     JPanel actualPanel;
     boolean locked = false;
     ImageIcon leftImage = null;
-    ImageIcon welcomeImage = null;
 
     /**
      * Creates new form Main
      */
     public Main() {
-        
+
         leftImage = ImageUtil.getRelativeImageIcon(Properties.getPropertie("left-image"));
-        
-        if(leftImage == null){
-            leftImage = new ImageIcon(getClass().getResource("org.jinstaller.resources.app.png"));
+
+        if (leftImage == null) {
+            leftImage = new ImageIcon(getClass().getResource("/org/jinstaller/resources/app.png"));
         }
-        
-        welcomeImage = ImageUtil.getRelativeImageIcon("welcome-image");
-        
-        if(welcomeImage == null){
-            welcomeImage = new ImageIcon(getClass().getResource("org.jinstaller.resources.start.png"));
-        }
-        
+
+
         initComponents();
         setLocationRelativeTo(null);
         fases = new ArrayList<InstallerFase>();
         fases.add(new JPanelStart());
         fases.add(new JPanelLicence());
-        fases.add(new JPanelStart());
+        fases.add(new JPanelFolderSelection());
+        setSize(810, 400);
         next();
     }
 
@@ -57,9 +54,16 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
             actualPanel.setVisible(false);
             jPanelInteract.remove(actualPanel);
         }
-        actualPanel = fases.get(pointer).getPanel();
-        actualPanel.setVisible(true);
+
+        InstallerFase fase = fases.get(pointer);
         
+        fase.setMainInstaller(this);
+        fase.prepare();
+
+        actualPanel = fases.get(pointer).getPanel();
+
+        actualPanel.setVisible(true);
+
         jPanelInteract.add(actualPanel);
         changeButtoms();
 
@@ -309,14 +313,14 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
     public void forceContine() {
         jButtonNextMousePressed(null);
     }
-    
+
     private void lock(boolean lock) {
         locked = lock;
         jButtonCancel.setEnabled(lock);
         jButtonNext.setEnabled(lock);
         jButtonPrev.setEnabled(lock);
     }
-    
+
     public void lock() {
         lock(true);
     }
@@ -324,4 +328,9 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
     public void unlock() {
         lock(false);
     }
+
+    public void changeTitle(String title) {
+        jLabelTitle.setText(MessageUtil.getMessage(title));
+    }
+    
 }

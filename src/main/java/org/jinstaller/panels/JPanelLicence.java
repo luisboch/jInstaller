@@ -7,6 +7,9 @@ package org.jinstaller.panels;
 import javax.swing.JPanel;
 import org.jinstaller.InstallerFase;
 import org.jinstaller.MainInstaller;
+import org.jinstaller.util.FileUtil;
+import org.jinstaller.util.MessageUtil;
+import org.jinstaller.util.Properties;
 
 /**
  *
@@ -15,11 +18,13 @@ import org.jinstaller.MainInstaller;
 public class JPanelLicence extends javax.swing.JPanel implements InstallerFase {
 
     MainInstaller main;
-
+    String text;
     /**
      * Creates new form JPanelStart
      */
     public JPanelLicence() {
+        text = MessageUtil.getMessage(FileUtil.readText(
+                Properties.getPropertie("terms-file")));
         initComponents();
     }
 
@@ -44,7 +49,9 @@ public class JPanelLicence extends javax.swing.JPanel implements InstallerFase {
         jLabel2.setText("Please Agree this terms:");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
         jTextArea1.setRows(5);
+        jTextArea1.setText(text);
         jScrollPane1.setViewportView(jTextArea1);
 
         jCheckBoxTerms.setText("I read and agree this terms");

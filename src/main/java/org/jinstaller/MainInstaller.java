@@ -13,4 +13,5 @@ public interface MainInstaller {
     void forceContine();
     void lock();
     void unlock();
+    void changeTitle(String title);
 }

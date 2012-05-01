@@ -4,9 +4,12 @@
  */
 package org.jinstaller.panels;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import org.jinstaller.InstallerFase;
 import org.jinstaller.MainInstaller;
+import org.jinstaller.util.Properties;
+import org.jinstaller.util.ImageUtil;
 
 /**
  *
@@ -15,11 +18,16 @@ import org.jinstaller.MainInstaller;
 public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
 
     MainInstaller main;
-
+    ImageIcon welcomeImage = null;
     /**
      * Creates new form JPanelStart
      */
     public JPanelStart() {
+        welcomeImage = ImageUtil.getRelativeImageIcon(Properties.getPropertie("welcome-image"));
+        
+        if(welcomeImage == null){
+            welcomeImage = new ImageIcon(getClass().getResource("/org/jinstaller/resources/start.png"));
+        }
         initComponents();
     }
 
@@ -38,7 +46,7 @@ public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
         setMinimumSize(new java.awt.Dimension(650, 250));
         setPreferredSize(new java.awt.Dimension(650, 250));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jinstaller/resources/start.png"))); // NOI18N
+        jLabel1.setIcon(welcomeImage);
         add(jLabel1);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -51,6 +59,8 @@ public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
 
     public void prepare() {
        setVisible(true);
+       main.changeMessage(Properties.getPropertie("welcome-message"));
+       main.changeTitle("Welcome!");
     }
     
     public void setMainInstaller(MainInstaller main) {
