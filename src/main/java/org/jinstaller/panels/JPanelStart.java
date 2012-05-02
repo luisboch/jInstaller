@@ -23,7 +23,7 @@ public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
      * Creates new form JPanelStart
      */
     public JPanelStart() {
-        welcomeImage = ImageUtil.getRelativeImageIcon(Properties.getPropertie("welcome-image"));
+        welcomeImage = ImageUtil.getRelativeImageIcon(Properties.getProperty("welcome-image"));
         
         if(welcomeImage == null){
             welcomeImage = new ImageIcon(getClass().getResource("/org/jinstaller/resources/start.png"));
@@ -59,7 +59,7 @@ public class JPanelStart extends javax.swing.JPanel implements InstallerFase{
 
     public void prepare() {
        setVisible(true);
-       main.changeMessage(Properties.getPropertie("welcome-message"));
+       main.changeMessage(Properties.getProperty("welcome-message"));
        main.changeTitle("Welcome!");
     }
     

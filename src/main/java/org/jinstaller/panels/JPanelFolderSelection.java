@@ -5,6 +5,9 @@
 package org.jinstaller.panels;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +32,7 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
     public JPanelFolderSelection() {
         initComponents();
         fileChooser.setVisible(false);
+        folder = new File(Properties.getProperty("installaction-folder"));
     }
 
     /**
@@ -103,8 +107,9 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFolderSelectionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFolderSelectionMousePressed
+        
+        fileChooser.setSelectedFile(folder);
         fileChooser.setVisible(true);
-
         int returnVal = fileChooser.showOpenDialog(null);
         
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -112,8 +117,6 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
 
             jTextFieldFolder.setText(folder.getAbsolutePath());
 
-        } else {
-            System.out.println("File access cancelled by user.");
         }
         fileChooser.setVisible(false);
     }//GEN-LAST:event_jButtonFolderSelectionMousePressed
@@ -129,7 +132,8 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
         Properties.put("installaction-folder", path);
         boolean valid = true;
         if (!folder.isDirectory() || !folder.canWrite()) {
-            jDialogMessage.show((JFrame) main, "Please select a valid folder!", jDialogMessage.DialogType.OK);
+            jDialogMessage.show((JFrame) main, "Please select a valid folder!",
+                    jDialogMessage.DialogType.OK);
             valid = false;
         }
         return valid;

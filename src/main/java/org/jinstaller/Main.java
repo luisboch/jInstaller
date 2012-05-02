@@ -4,6 +4,7 @@
  */
 package org.jinstaller;
 
+import java.awt.Cursor;
 import org.jinstaller.util.Properties;
 import org.jinstaller.panels.JPanelLicence;
 import org.jinstaller.panels.JPanelStart;
@@ -14,6 +15,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import org.jinstaller.panels.JPanelFolderSelection;
+import org.jinstaller.panels.JPanelInstallaction;
 
 /**
  *
@@ -32,7 +34,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
      */
     public Main() {
 
-        leftImage = ImageUtil.getRelativeImageIcon(Properties.getPropertie("left-image"));
+        leftImage = ImageUtil.getRelativeImageIcon(Properties.getProperty("left-image"));
 
         if (leftImage == null) {
             leftImage = new ImageIcon(getClass().getResource("/org/jinstaller/resources/app.png"));
@@ -45,6 +47,8 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
         fases.add(new JPanelStart());
         fases.add(new JPanelLicence());
         fases.add(new JPanelFolderSelection());
+        fases.add(new JPanelInstallaction());
+        fases.add(new JPanelStart());
         setSize(810, 400);
         next();
     }
@@ -56,7 +60,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
         }
 
         InstallerFase fase = fases.get(pointer);
-        
+
         fase.setMainInstaller(this);
         fase.prepare();
 
@@ -250,11 +254,13 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMousePressed
-        jDialogMessage.ResultType resultType =
-                jDialogMessage.show(this, "Do you really want to cancel?",
-                jDialogMessage.DialogType.OK_CANCEL);
-        if (resultType.equals(jDialogMessage.ResultType.OK)) {
-            System.exit(0);
+        if (!locked) {
+            jDialogMessage.ResultType resultType =
+                    jDialogMessage.show(this, "Do you really want to cancel?",
+                    jDialogMessage.DialogType.OK_CANCEL);
+            if (resultType.equals(jDialogMessage.ResultType.OK)) {
+                System.exit(0);
+            }
         }
     }//GEN-LAST:event_jButtonCancelMousePressed
 
@@ -316,9 +322,9 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
 
     private void lock(boolean lock) {
         locked = lock;
-        jButtonCancel.setEnabled(lock);
-        jButtonNext.setEnabled(lock);
-        jButtonPrev.setEnabled(lock);
+        jButtonCancel.setEnabled(!lock);
+        jButtonNext.setEnabled(!lock);
+        jButtonPrev.setEnabled(!lock);
     }
 
     public void lock() {
@@ -332,5 +338,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
     public void changeTitle(String title) {
         jLabelTitle.setText(MessageUtil.getMessage(title));
     }
-    
+    public void setCursor(int cursor){
+        super.setCursor(cursor);
+    }
 }

@@ -24,7 +24,7 @@ public class JPanelLicence extends javax.swing.JPanel implements InstallerFase {
      */
     public JPanelLicence() {
         text = MessageUtil.getMessage(FileUtil.readText(
-                Properties.getPropertie("terms-file")));
+                Properties.getProperty("terms-file")));
         initComponents();
     }
 

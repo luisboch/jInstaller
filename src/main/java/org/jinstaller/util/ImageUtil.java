@@ -36,7 +36,6 @@ public class ImageUtil {
             System.out.println("loading image:" + path);
             return new javax.swing.ImageIcon(getImage(path));
         } catch (Exception ex) {
-            Logger.getLogger(ImageUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -46,7 +45,6 @@ public class ImageUtil {
         try {
             return ImageIO.read(file);
         } catch (IOException ex) {
-            Logger.getLogger(ImageUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

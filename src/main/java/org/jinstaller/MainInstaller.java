@@ -4,6 +4,8 @@
  */
 package org.jinstaller;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author luis
@@ -14,4 +16,5 @@ public interface MainInstaller {
     void lock();
     void unlock();
     void changeTitle(String title);
+    void setCursor(int cursor);
 }

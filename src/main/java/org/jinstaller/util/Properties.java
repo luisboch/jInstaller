@@ -4,11 +4,11 @@
  */
 package org.jinstaller.util;
 
+import java.io.File;
 import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.jinstaller.util.FileUtil;
 
 /**
  *
@@ -29,6 +29,9 @@ public class Properties {
         properties.put("terms", "licence.txt");
         properties.put("left-image", "left-image.png");
         properties.put("welcome-image", "welcome-image.png");
+        properties.put("installaction-folder", System.getProperty("user.dir"));
+
+        properties.put("data-folder","files");
 
 
         String key;
@@ -50,14 +53,15 @@ public class Properties {
 
     }
 
-    public static String getPropertie(String property) {
+    public static String getProperty(String property) {
         return properties.get(property);
     }
-    protected static Map<String,String> getProperties(){
+
+    protected static Map<String, String> getProperties() {
         return properties;
     }
-    
-    public static void put(String key, String value){
+
+    public static void put(String key, String value) {
         properties.put(key, value);
     }
 }

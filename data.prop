@@ -8,3 +8,4 @@ application-full-name=jInstaller ( All rights is reserved )
 application-single-name=jInstaller
 application-version=1.0
 welcome-message=Welcome to %application-single-name% installer, please click next to proceed instalation.
+target-folder=myapp
