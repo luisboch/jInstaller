@@ -4,9 +4,12 @@
  */
 package org.jinstaller.panels;
 
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jinstaller.InstallerFase;
 import org.jinstaller.MainInstaller;
+import org.jinstaller.jDialogMessage;
 import org.jinstaller.util.FileUtil;
 import org.jinstaller.util.MessageUtil;
 import org.jinstaller.util.Properties;
@@ -15,16 +18,26 @@ import org.jinstaller.util.Properties;
  *
  * @author luis
  */
-public class JPanelLicence extends javax.swing.JPanel implements InstallerFase {
+public class JPanelTerms extends javax.swing.JPanel implements InstallerFase {
 
     MainInstaller main;
     String text;
+
     /**
      * Creates new form JPanelStart
      */
-    public JPanelLicence() {
-        text = MessageUtil.getMessage(FileUtil.readText(
-                Properties.getProperty("terms-file")));
+    public JPanelTerms() {
+        try {
+            text = MessageUtil.getMessage(FileUtil.readText(
+                    Properties.getProperty("licence-file")));
+        } catch (Exception e) {
+            jDialogMessage.show((JFrame) main, "license file not found, \n"
+                    + "please see logs to more information.");
+            Logger.getLogger(this.getClass().getSimpleName()).
+                    info("License file not found, add one in path of instalation"
+                    + " and indicate in data.props with key:\"licence-file\"");
+            
+        }
         initComponents();
     }
 
@@ -93,7 +106,12 @@ public class JPanelLicence extends javax.swing.JPanel implements InstallerFase {
     // End of variables declaration//GEN-END:variables
 
     public boolean onContinue() {
-        return jCheckBoxTerms.isSelected();
+        if(!jCheckBoxTerms.isSelected()){
+            jDialogMessage.show((JFrame)main, "Please, accept the terms and check the box to continue");
+            
+            return false;
+        }
+        return true;
     }
 
     public void prepare() {

@@ -1,0 +1,139 @@
+JINSTALLER 1.0 ("Product")
+"Não há ninguém que ame a dor por si só,
+que a busque e queira tê-la, simplesmente por ser dor..."
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Praesent tempus ultricies lorem sit amet tincidunt. 
+In vulputate, nibh quis fringilla malesuada, 
+sem ipsum pellentesque ante, sed viverra massa justo sed mi.
+Quisque sit amet vestibulum lacus. Ut a nisl massa, 
+non elementum justo. Phasellus viverra semper nibh placerat
+porta. Quisque et leo vel arcu interdum malesuada. 
+Curabitur a eros odio. Phasellus eget quam et velit
+fringilla fermentum. Vivamus dolor lacus, adipiscing et
+vehicula eu, pharetra sollicitudin elit. Praesent nibh
+ipsum, consectetur sed facilisis sed, posuere non felis.
+Maecenas augue ligula, dictum ac vestibulum tempor, dapibus
+at quam. Vestibulum malesuada varius faucibus. Nulla congue
+vestibulum mauris quis suscipit.
+
+Donec leo lectus, tempus at suscipit sit amet, faucibus sit
+amet ligula. Cras posuere diam ac nibh molestie in 
+fringilla magna rhoncus. Sed ut leo sed sapien luctus 
+aliquam et ac purus. Aliquam aliquet pulvinar nulla nec 
+lacinia. Sed et ante ac orci sagittis aliquam. Quisque 
+blandit sodales quam, tempus tempus lacus ultricies vitae. 
+Vivamus dapibus, lorem ac tempus varius, tellus arcu 
+aliquet magna, in imperdiet quam ipsum et quam. Sed nulla 
+mauris, lobortis in molestie vel, malesuada faucibus elit. 
+Sed id pellentesque lectus. Mauris luctus viverra massa sed 
+lobortis. Praesent cursus ipsum nec lacus aliquam 
+sollicitudin. Pellentesque ultricies aliquet porttitor. 
+Vivamus imperdiet tempus odio ut pretium. Cras in quam 
+risus, et ultrices enim. Suspendisse euismod mattis 
+facilisis. Suspendisse mauris ligula, luctus ac varius vel,
+consequat ac libero.
+
+Praesent feugiat magna tincidunt tellus ullamcorper sit 
+amet gravida lorem imperdiet. Vestibulum consequat, arcu 
+at scelerisque laoreet, lectus libero venenatis nunc, et 
+adipiscing enim eros sit amet lacus. Mauris quis hendrerit 
+lacus. Sed vitae sapien mi, non iaculis orci. Praesent 
+mollis, enim ut dapibus placerat, augue elit fringilla 
+felis, eu gravida dui mi ac orci. Mauris dignissim semper 
+massa at lobortis. Quisque semper mauris quis nibh 
+vulputate non pulvinar arcu sagittis. Donec luctus quam 
+id tortor sagittis viverra. Sed malesuada nisl vel odio 
+posuere non commodo tortor convallis. Integer volutpat 
+laoreet volutpat. Vestibulum ante ipsum primis in 
+faucibus orci luctus et ultrices posuere cubilia Curae; 
+Donec tempus, metus eget condimentum condimentum, nisl 
+eros ultrices ligula, a porta orci felis vitae nulla. 
+Nullam pellentesque risus eu metus hendrerit iaculis. 
+Pellentesque habitant morbi tristique senectus et netus et 
+malesuada fames ac turpis egestas. Curabitur lectus turpis, 
+laoreet non viverra vitae, ornare eget lacus. Fusce vel 
+ipsum ac erat congue volutpat blandit ac sem.
+
+Vivamus pretium sodales pharetra. Mauris turpis est, iaculis
+in facilisis id, condimentum et ante. Phasellus auctor 
+mollis sagittis. Mauris at quam odio, ac luctus nisi. Nunc 
+sed risus leo. Duis eleifend, sapien in sollicitudin 
+venenatis, lorem enim scelerisque nisi, id volutpat tellus 
+tellus in metus. Aliquam erat volutpat. Nunc faucibus elit 
+id nibh aliquet auctor. In dui libero, ultrices vulputate 
+convallis ac, hendrerit non enim. Ut rhoncus gravida blandit. 
+Curabitur in dui non purus scelerisque rhoncus. Donec 
+sollicitudin ornare ipsum vitae congue.
+
+In urna ligula, pellentesque in accumsan vitae, vulputate vel
+sapien. Proin facilisis fringilla tellus, sit amet volutpat
+magna auctor vitae. Proin congue, enim id imperdiet dapibus,
+purus orci scelerisque odio, in euismod enim justo quis est. 
+Quisque cursus pellentesque leo, sit amet consectetur augue 
+convallis ac. Suspendisse potenti. Sed in ipsum ultricies arcu
+mattis tempor non ut tellus. Donec faucibus vestibulum blandit. 
+Ut fringilla sollicitudin turpis eget consequat. Sed eu sapien 
+tellus. Curabitur quis nisi at neque blandit interdum facilisis 
+vel quam.
+
+Etiam id elit ante. Curabitur leo ligula, ornare at tempor nec,
+elementum nec velit. Aliquam erat volutpat. Morbi quis dui non
+nibh malesuada vestibulum. Vivamus arcu justo, ornare eget 
+feugiat sed, adipiscing ac velit. Fusce vulputate orci lorem, 
+ut tincidunt mi. Etiam dapibus vestibulum augue in condimentum. 
+Aenean dignissim suscipit tortor, a lacinia neque tincidunt 
+sed. Sed fringilla ante nec eros tempus sed bibendum velit 
+elementum. Mauris in quam nibh. Aliquam ullamcorper semper est,
+et luctus mauris varius et. Vestibulum ipsum odio, dignissim et
+gravida ut, ullamcorper ac massa. Maecenas eget magna sit amet 
+nunc dapibus vulputate. Quisque a massa ante. Cras vel mattis 
+dui. Curabitur congue arcu nec ipsum ornare scelerisque.
+
+Nam euismod, mi ac molestie suscipit, tellus neque consectetur 
+dui, et eleifend quam tellus vel est. Quisque semper scelerisque
+dapibus. Etiam a lacinia leo. Nulla lacus nisl, volutpat eget 
+venenatis in, mattis id tellus. Vivamus ut ligula odio, non
+fringilla arcu. Pellentesque sed leo turpis. Integer vitae orci
+sed leo volutpat facilisis. Nullam sed elit velit, vitae feugiat
+nisl. Class aptent taciti sociosqu ad litora torquent per 
+conubia nostra, per inceptos himenaeos. Phasellus auctor, nisl 
+eu aliquam volutpat, urna elit porttitor tortor, eget mollis 
+nisl lectus quis nunc. Suspendisse potenti.
+
+Phasellus viverra iaculis porttitor. Integer in nisi quam, at 
+rhoncus quam. Sed a mauris erat. Nam consequat ipsum elit, sit 
+amet bibendum ligula. Sed at dapibus magna. Mauris odio ante, 
+iaculis a hendrerit a, pulvinar a dui. Morbi blandit arcu vitae 
+lectus congue vestibulum posuere tellus vulputate. Donec sapien 
+nisi, eleifend quis consectetur non, aliquet vel lectus. Nulla 
+facilisi. Maecenas luctus lectus ac mauris sodales in elementum 
+nibh condimentum. Maecenas dapibus facilisis laoreet.
+
+Phasellus justo ipsum, cursus vel fringilla id, ullamcorper eu 
+velit. Nunc lacinia mauris sit amet risus hendrerit sagittis. 
+Aenean a mi eget dui placerat hendrerit. Proin adipiscing 
+interdum tristique. Nunc quis risus libero. Proin elementum, 
+dui nec porta porttitor, tortor purus aliquet mauris, eu congue 
+est nulla id sapien. Praesent aliquet mattis neque quis cursus. 
+Aliquam sollicitudin, tellus eleifend egestas tempor, nisl 
+ligula euismod leo, interdum tempor magna leo pulvinar magna. 
+Aenean nec magna elit, in imperdiet metus. In non lacus tellus.
+
+Nulla dapibus leo nec lorem vulputate eu placerat libero 
+adipiscing. Nulla vel metus ipsum. Quisque ac odio massa, eu 
+euismod lectus. Vivamus suscipit, erat eget rhoncus convallis, 
+lorem mi semper neque, eget auctor nulla nibh ut lectus. Nam eu 
+nibh nisl, vel euismod quam. Quisque porta elit a mi dapibus ac 
+fermentum tellus vehicula. Fusce rhoncus odio mattis leo 
+fringilla gravida. Duis malesuada justo ac justo cursus tempus.
+Mauris tortor felis, vulputate nec tempus quis, fringilla nec 
+erat. Nulla risus turpis, facilisis vel viverra sit amet, dictum
+luctus mauris. Morbi vehicula, arcu ut eleifend dictum, eros
+libero congue ligula, et ullamcorper ante sem et quam. In vitae
+mattis purus. Quisque viverra, ipsum eu ornare commodo, odio 
+lectus porta purus, sit amet mattis sem lectus vel purus. Fusce 
+at dolor vel nunc iaculis dapibus. Nunc suscipit mauris vel 
+elit iaculis malesuada.

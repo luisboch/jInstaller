@@ -16,10 +16,9 @@ import java.util.Map;
  */
 public class Properties {
 
-    private static Map<String, String> properties;
+    private static final Map<String, String> properties= new LinkedHashMap<String, String>();
 
     static {
-        properties = new LinkedHashMap<String, String>();
 
         List<String> string = FileUtil.readString("data.prop");
 
@@ -29,9 +28,10 @@ public class Properties {
         properties.put("terms", "licence.txt");
         properties.put("left-image", "left-image.png");
         properties.put("welcome-image", "welcome-image.png");
+        properties.put("welcome-image", "welcome-image.png");
         properties.put("installaction-folder", System.getProperty("user.dir"));
 
-        properties.put("data-folder","files");
+        properties.put("data-folder", "files");
 
 
         String key;
@@ -47,7 +47,9 @@ public class Properties {
             } else {
                 value = null;
             }
-            properties.put(key, value);
+            if (value!= null && !value.startsWith("#")) {
+                properties.put(key, value);
+            }
 
         }
 

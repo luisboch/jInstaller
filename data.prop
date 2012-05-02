@@ -1,7 +1,6 @@
-licence-file=data.prop
+licence-file=licence.txt
 left-image=left.png
 welcome-image=welcome.png
-terms-file=data.prop
 #comentaries start with '#'
 #this lines is to basic configuration of the application to visual changes.
 application-full-name=jInstaller ( All rights is reserved )

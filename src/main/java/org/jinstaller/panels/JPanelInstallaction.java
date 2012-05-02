@@ -237,7 +237,7 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
                     enableInformations(false);
                     
                     //configure shortcuts..
-
+                    
                     //dependents O.S.
                     //TODO configure shortcuts
                     

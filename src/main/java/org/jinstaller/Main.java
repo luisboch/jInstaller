@@ -6,7 +6,7 @@ package org.jinstaller;
 
 import java.awt.Cursor;
 import org.jinstaller.util.Properties;
-import org.jinstaller.panels.JPanelLicence;
+import org.jinstaller.panels.JPanelTerms;
 import org.jinstaller.panels.JPanelStart;
 import org.jinstaller.util.ImageUtil;
 import org.jinstaller.util.MessageUtil;
@@ -45,7 +45,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
         setLocationRelativeTo(null);
         fases = new ArrayList<InstallerFase>();
         fases.add(new JPanelStart());
-        fases.add(new JPanelLicence());
+        fases.add(new JPanelTerms());
         fases.add(new JPanelFolderSelection());
         fases.add(new JPanelInstallaction());
         fases.add(new JPanelStart());
