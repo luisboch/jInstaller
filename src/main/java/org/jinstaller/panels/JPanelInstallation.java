@@ -21,7 +21,7 @@ import org.jinstaller.util.Properties;
  *
  * @author luis
  */
-public class JPanelInstallaction extends javax.swing.JPanel implements InstallerFase {
+public class JPanelInstallation extends javax.swing.JPanel implements InstallerFase {
 
     MainInstaller main;
     File InstallationFolder;
@@ -30,7 +30,7 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
     /**
      * Creates new form JPanelStart
      */
-    public JPanelInstallaction() {
+    public JPanelInstallation() {
         initComponents();
     }
 
@@ -116,7 +116,7 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
     public void prepare() {
         main.setCursor(Cursor.WAIT_CURSOR);
         setVisible(true);
-        InstallationFolder = new File(Properties.getProperty("installaction-folder"));
+        InstallationFolder = new File(Properties.getProperty("installation-folder"));
         main.lock();
 
         startConfiguration();
@@ -163,7 +163,7 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
                     main.changeMessage("Preparing to install..");
                     main.changeTitle("Installing");
 
-                    Logger.getLogger(JPanelInstallaction.class.getName()).
+                    Logger.getLogger(JPanelInstallation.class.getName()).
                             log(Level.INFO, "Installing on - {0}",
                             InstallationFolder.getCanonicalPath());
                     //set value of progress bar
@@ -179,7 +179,7 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
                                 + System.getProperty("file.separator")
                                 + Properties.getProperty("data-folder");
                     } catch (IOException ex) {
-                        Logger.getLogger(JPanelInstallaction.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(JPanelInstallation.class.getName()).log(Level.SEVERE, null, ex);
                         System.exit(0);
                     }
                     //capture localfolder
@@ -235,19 +235,107 @@ public class JPanelInstallaction extends javax.swing.JPanel implements Installer
                     //closing values of informations
                     jLabelMessage.setText("");
                     enableInformations(false);
-                    
+
                     //configure shortcuts..
-                    
-                    //dependents O.S.
-                    //TODO configure shortcuts
-                    
+                    if (Properties.getProperty("create-shortcuts").
+                            equals("true")) {
+                        //dependents O.S.
+                        //TODO configure shortcuts
+                        //discovering system name
+                        String systemName = System.getProperty("os.name");
+
+                        //shortcuts for linux
+                        String appName = Properties.getProperty("application-single-name").
+                                toLowerCase();
+
+                        //main file
+                        File executable = new File(
+                                InstallationFolder.getCanonicalPath()
+                                + System.getProperty("file.separator")
+                                + Properties.getProperty("linux-runnable"));
+
+                        //icon
+                        File icon = new File(
+                                InstallationFolder.getCanonicalPath()
+                                + System.getProperty("file.separator")
+                                + Properties.getProperty("icon-file"));
+                        if (systemName.equals("Linux")) {
+
+                            //set main file executable ( chmod +x )
+                            Runtime r = Runtime.getRuntime();
+                            r.exec("chmod +x "
+                                    + executable.getCanonicalPath());
+
+
+                            //criando atalho
+//                            //add to /usr/bin
+                            StringBuilder builder = new StringBuilder();
+//                            builder.append("update-alternatives --install /usr/bin/").
+//                                    append(appName).append(" ").append(appName).
+//                                    append(" ").append(shc.getCanonicalPath()).
+//                                    append("1");
+//                            r.exec(builder.toString());
+                            builder = new StringBuilder();
+                            builder.append("[Desktop Entry]\n"
+                                    + "Encoding=UTF-8\n"
+                                    + "Name=" + appName + "\n"
+                                    + "Comment=").append(
+                                    Properties.getProperty(
+                                    "icon-comments")).append("\n"
+                                    + "Exec="
+                                    + executable.getCanonicalPath() + "\n"
+                                    + "Icon=" + icon.getCanonicalPath() + "\n"
+                                    + "Categories="
+                                    + Properties.getProperty("icon-categories")
+                                    + "\n"
+                                    + "Version="
+                                    + Properties.getProperty("application-version")
+                                    + "\n"
+                                    + "Type=Application\n"
+                                    + "Terminal="
+                                    + (Properties.getProperty("icon-use-terminal").
+                                    equals("true") ? 1 : 0));
+                            System.out.println("trying to write shortcut on User dir");
+                            
+                            "[Desktop Entry]
+X-AppInstall-Package=netbeans
+X-AppInstall-Popcon=597
+X-AppInstall-Section=universe
+
+Name=NetBeans IDE 7.0.1
+Comment=Integrated Development Environment
+TryExec=/usr/bin/netbeans
+Exec=/usr/bin/netbeans
+Icon=_usr_share_netbeans_7.0.1_nb_netbeans
+Categories=Development;IDE;Java;
+Terminal=false
+Type=Application
+StartupNotify=true
+
+X-Ubuntu-Gettext-Domain=app-install-data
+"
+                            
+                            File shortCut = new File(System.getProperty("user.home")
+                                    + "/.local/share/applications/"
+                                    + appName.
+                                    toLowerCase() + ".desktop");
+
+                            FileUtil.writeToFile(shortCut, builder.toString());
+
+
+                        }
+
+
+
+                    }
+
                     main.changeMessage("Instalation is done!");
                     main.unlock();
                     main.forceContine();
                     main.setCursor(Cursor.DEFAULT_CURSOR);
 
                 } catch (IOException ex) {
-                    Logger.getLogger(JPanelInstallaction.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JPanelInstallation.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };

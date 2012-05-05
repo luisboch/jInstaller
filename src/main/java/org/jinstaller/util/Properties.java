@@ -29,8 +29,9 @@ public class Properties {
         properties.put("left-image", "left-image.png");
         properties.put("welcome-image", "welcome-image.png");
         properties.put("welcome-image", "welcome-image.png");
-        properties.put("installaction-folder", System.getProperty("user.dir"));
-
+        properties.put("installation-folder", System.getProperty("user.home"));
+        properties.put("welcome-message", "Welcome to %application-single-name% installer, please click next to proceed instalation.");
+        properties.put("create-shortcuts", "true");
         properties.put("data-folder", "files");
 
 

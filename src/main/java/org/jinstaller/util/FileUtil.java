@@ -88,4 +88,11 @@ public class FileUtil {
         }
         
     }
+    public static void writeToFile(File file, String text) throws FileNotFoundException, IOException{
+        OutputStream w = new FileOutputStream(file);
+        
+        w.write(text.getBytes());
+        w.close();
+        
+    }
 }

@@ -32,7 +32,7 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
     public JPanelFolderSelection() {
         initComponents();
         fileChooser.setVisible(false);
-        folder = new File(Properties.getProperty("installaction-folder"));
+        folder = new File(Properties.getProperty("installation-folder"));
     }
 
     /**
@@ -48,6 +48,7 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
         jTextFieldFolder = new javax.swing.JTextField();
         jButtonFolderSelection = new javax.swing.JButton();
         fileChooser = new javax.swing.JFileChooser();
+        jCheckBoxShortcuts = new javax.swing.JCheckBox();
 
         setMaximumSize(new java.awt.Dimension(650, 250));
         setMinimumSize(new java.awt.Dimension(650, 250));
@@ -55,7 +56,7 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
 
         jLabelMessageFolder.setText(MessageUtil.getMessage("The %application-single-name% will install in this directory"));
 
-        jTextFieldFolder.setText(System.getProperty("user.dir"));
+        jTextFieldFolder.setText(System.getProperty("user.home"));
 
         jButtonFolderSelection.setText("Change");
         jButtonFolderSelection.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,6 +66,9 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
         });
 
         fileChooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+
+        jCheckBoxShortcuts.setSelected(true);
+        jCheckBoxShortcuts.setText("Create shortcuts");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,7 +82,9 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 24, Short.MAX_VALUE)
-                        .addComponent(jTextFieldFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBoxShortcuts)
+                            .addComponent(jTextFieldFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonFolderSelection)
                         .addGap(29, 29, 29))))
@@ -97,7 +103,9 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonFolderSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxShortcuts)
+                .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -123,24 +131,30 @@ public class JPanelFolderSelection extends javax.swing.JPanel implements Install
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JButton jButtonFolderSelection;
+    private javax.swing.JCheckBox jCheckBoxShortcuts;
     private javax.swing.JLabel jLabelMessageFolder;
     private javax.swing.JTextField jTextFieldFolder;
     // End of variables declaration//GEN-END:variables
 
     public boolean onContinue() {
         String path = jTextFieldFolder.getText();
-        Properties.put("installaction-folder", path);
+        Properties.put("installation-folder", path);
         boolean valid = true;
         if (!folder.isDirectory() || !folder.canWrite()) {
             jDialogMessage.show((JFrame) main, "Please select a valid folder!",
                     jDialogMessage.DialogType.OK);
             valid = false;
         }
+        Properties.put("create-shortcuts",
+                jCheckBoxShortcuts.isSelected()?"true":"false");
+        
         return valid;
     }
 
     public void prepare() {
         setVisible(true);
+        jCheckBoxShortcuts.setSelected(
+                Properties.getProperty("create-shortcuts").equals("true"));
     }
 
     public void setMainInstaller(MainInstaller main) {

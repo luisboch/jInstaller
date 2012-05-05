@@ -15,7 +15,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import org.jinstaller.panels.JPanelFolderSelection;
-import org.jinstaller.panels.JPanelInstallaction;
+import org.jinstaller.panels.JPanelInstallation;
 
 /**
  *
@@ -47,7 +47,7 @@ public class Main extends javax.swing.JFrame implements MainInstaller {
         fases.add(new JPanelStart());
         fases.add(new JPanelTerms());
         fases.add(new JPanelFolderSelection());
-        fases.add(new JPanelInstallaction());
+        fases.add(new JPanelInstallation());
         fases.add(new JPanelStart());
         setSize(810, 400);
         next();
